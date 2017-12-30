@@ -1,30 +1,52 @@
 #! /usr/bin/env node
 
-const parser = require('argv-parser');
-
-const rules = {
-  body: {
-    type: String,
-    short: 'b'
-  },
-  password: {
-    type: String,
-    short: 'p'
-  },
-  uuid: {
-    type: String,
-    short: 'u'
-  }
-};
-
-// TODO: add --help
-const argv = parser.parse(process.argv, {rules: rules}).parsed;
+const ArgumentParser = require('argparse').ArgumentParser;
+const parser = new ArgumentParser({
+  addHelp: true,
+  description: 'Noteburn CLI'
+});
 
 const mode = process.argv[2];
+
 if (mode == "create") {
-  require('../create')(argv);
+  parser.addArgument(
+    ['-b', '--body'],
+    {
+      help: 'Your message.',
+      required: true
+    }
+  );
+
+  parser.addArgument(
+    ['-p', '--password'],
+    {
+      help: 'Password to encrypt your message with.'
+    }
+  );
+
+  require('../create')(parser.parseArgs());
 } else if (mode == "read") {
-  require('../read')(argv);
+  parser.addArgument(
+    ['-u', '--uuid'],
+    {
+      help: 'Your message UUID. UUID is generated and displayed when you create a message.',
+      required: true
+    }
+  );
+
+  parser.addArgument(
+    ['-p', '--password'],
+    {
+      help: 'Password to encrypt your message with.',
+      required: true
+    }
+  );
+
+  require('../read')(parser.parseArgs());
 } else {
-  //  TODO: handle non existing mode
+  parser.addArgument(['create'], {help: "see: nb create -h"});
+  parser.addArgument(['read'], {help: "see: nb read -h"});
+  parser.parseArgs()
+
+  // console.log("see nb create --help or nb read --help");
 }

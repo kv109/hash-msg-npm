@@ -4,7 +4,8 @@
   "description": "Share sensitive data easily and safely with cli",
   "main": "index.js",
   "bin": {
-    "nb": "bin/nb.js"
+    "nb": "bin/nb.js",
+    "noteburn": "bin/nb.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -26,7 +27,7 @@
   },
   "homepage": "https://github.com/kv109/hash-msg-npm#readme",
   "dependencies": {
-    "argv-parser": "^0.1.4",
+    "argparse": "^1.0.9",
     "prettyjson": "^1.2.1",
     "request": "^2.83.0"
   }

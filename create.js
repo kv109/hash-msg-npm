@@ -15,8 +15,12 @@ const Create = (argv) => {
     if (statusCode != 200) {
       console.log(PrettyJson.render(json, {noColor: true}));
     } else {
+      const uuid = json.uuid;
+
       console.log(" done! Your message can be read with the following command:");
-      console.log(`nb read -p ${password} -u ${json.uuid}`);
+      console.log(`nb read -p ${password} -u ${uuid}`);
+      console.log(`or with curl:`);
+      console.log(`curl -X POST -d "password=${password}" ${ENDPOINT}${uuid}`);
     }
   });
 };
