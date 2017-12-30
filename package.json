@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "Share sensitive data easily and safely with cli",
   "main": "index.js",
+  "bin": {
+    "nb": "bin/nb.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -21,5 +24,8 @@
   "bugs": {
     "url": "https://github.com/kv109/hash-msg-npm/issues"
   },
-  "homepage": "https://github.com/kv109/hash-msg-npm#readme"
+  "homepage": "https://github.com/kv109/hash-msg-npm#readme",
+  "dependencies": {
+    "shelljs": "^0.7.8"
+  }
 }
