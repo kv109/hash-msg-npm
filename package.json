@@ -1,0 +1,25 @@
+{
+  "name": "noteburn",
+  "version": "0.0.1",
+  "description": "Share sensitive data easily and safely with cli",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/kv109/hash-msg-npm.git"
+  },
+  "keywords": [
+    "encryption",
+    "share",
+    "sensitive",
+    "credentials"
+  ],
+  "author": "Kacper Walanus",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kv109/hash-msg-npm/issues"
+  },
+  "homepage": "https://github.com/kv109/hash-msg-npm#readme"
+}
