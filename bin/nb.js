@@ -10,13 +10,21 @@ const rules = {
   password: {
     type: String,
     short: 'p'
+  },
+  uuid: {
+    type: String,
+    short: 'u'
   }
 };
 
+// TODO: add --help
 const argv = parser.parse(process.argv, {rules: rules}).parsed;
 
 const mode = process.argv[2];
 if (mode == "create") {
-  const Create = require('../create');
-  Create(argv)
+  require('../create')(argv);
+} else if (mode == "read") {
+  require('../read')(argv);
+} else {
+  //  TODO: handle non existing mode
 }
