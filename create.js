@@ -9,18 +9,45 @@ const Create = (argv) => {
 
   process.stdout.write("Creating message...");
 
-  Request.post({url: ENDPOINT, form: {decrypted_content: body, password: password}}, (err, response, body) => {
+  let form = {};
+  form.decrypted_content = body;
+  if (password) {
+    form.password = password
+  }
+
+  Request.post({url: ENDPOINT, form: form}, (err, response, body) => {
     const statusCode = response && response.statusCode;
-    const json = JSON.parse(body);
+
+    let json = null;
+    try {
+      json = JSON.parse(body);
+    } catch (e) {
+    }
+
     if (statusCode != 200) {
       console.log(PrettyJson.render(json, {noColor: true}));
     } else {
+      const token = json.token;
       const uuid = json.uuid;
 
       console.log(" done! Your message can be read with the following command:");
-      console.log(`nb read -p ${password} -u ${uuid}`);
-      console.log(`or with curl:`);
-      console.log(`curl -X POST -d "password=${password}" ${ENDPOINT}${uuid}`);
+      if (password) {
+
+        const text = `nb read -p ${password} -u ${uuid}`;
+        console.log('-'.repeat(text.length));
+        console.log(`nb read -p ${password} -u ${uuid}`);
+        console.log('-'.repeat(text.length));
+        console.log(`or with curl:`);
+        console.log(`curl -X POST -d "password=${password}" ${ENDPOINT}${uuid}`);
+      } else {
+        const text = `nb read -t "${token}" -u ${uuid}`;
+        console.log('-'.repeat(text.length));
+        console.log(text);
+        console.log('-'.repeat(text.length));
+        console.log(`or with curl:`);
+        console.log(`curl ${ENDPOINT}${uuid}/${token}`);
+      }
+      console.log("Your message will self destruct after being read.");
     }
   });
 };

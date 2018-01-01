@@ -5,11 +5,10 @@ const ENDPOINT = "https://hash-msg.herokuapp.com/api/messages/";
 
 const Create = (argv) => {
   const password = argv.password;
+  const token = argv.token;
   const uuid = argv.uuid;
 
-  process.stdout.write("Fetching message...");
-
-  Request.post({url: `${ENDPOINT}${uuid}/`, form: {password: password}}, (err, response, body) => {
+  const handleResponse = (err, response, body) => {
     const statusCode = response && response.statusCode;
     let json = null;
     try {
@@ -33,7 +32,17 @@ const Create = (argv) => {
         console.log("--------MESSAGE ENDS ABOVE-------");
       }
     }
-  });
+  };
+
+  process.stdout.write("Fetching message...");
+
+  if (password) {
+    Request.post({url: `${ENDPOINT}${uuid}/`, form: {password: password}}, handleResponse);
+  } else if (token) {
+    Request.get({url: `${ENDPOINT}${uuid}/${token}`}, handleResponse);
+  } else {
+  //  TODO: handle missing param
+  }
 };
 
 module.exports = Create;
