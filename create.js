@@ -1,7 +1,7 @@
 const Request = require("request");
 const PrettyJson = require("prettyjson");
 
-const ENDPOINT = "https://hash-msg.herokuapp.com/api/messages/";
+const ENDPOINT = "https://www.noteburn.org/api/messages/";
 
 const Create = (argv) => {
   const body = argv.body;
