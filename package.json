@@ -1,6 +1,6 @@
 {
   "name": "noteburn",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Share sensitive data easily and safely with cli",
   "main": "index.js",
   "bin": {
@@ -29,6 +29,7 @@
   "dependencies": {
     "argparse": "^1.0.9",
     "prettyjson": "^1.2.1",
+    "read-file": "^0.2.0",
     "request": "^2.83.0"
   }
 }
