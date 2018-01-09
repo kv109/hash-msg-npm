@@ -1,6 +1,6 @@
 const Request = require("request");
 const PrettyJson = require("prettyjson");
-const ReadFile = require('read-file');
+const ReadFile = require('./lib/read-file');
 
 const ENDPOINT = "https://www.noteburn.org/api/messages/";
 
@@ -16,7 +16,7 @@ const Create = (argv) => {
   if (body) {
     form.decrypted_content = body;
   } else if (file) {
-    const fileBody = ReadFile.sync(file, {encoding: 'utf8'});
+    const fileBody = ReadFile(file, {encoding: 'utf8'});
     form.decrypted_content = fileBody;
   }
 
