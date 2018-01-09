@@ -30,6 +30,7 @@ const Create = (argv) => {
         console.log("------MESSAGE STARTS BELOW------");
         console.log(json.decrypted_content);
         console.log("--------MESSAGE ENDS ABOVE-------");
+        console.log("Message above has already been destroyed.");
       }
     }
   };

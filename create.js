@@ -1,16 +1,25 @@
 const Request = require("request");
 const PrettyJson = require("prettyjson");
+const ReadFile = require('read-file');
 
 const ENDPOINT = "https://www.noteburn.org/api/messages/";
 
 const Create = (argv) => {
   const body = argv.body;
+  const file = argv.file;
   const password = argv.password;
 
   process.stdout.write("Creating message...");
 
   let form = {};
-  form.decrypted_content = body;
+
+  if (body) {
+    form.decrypted_content = body;
+  } else if (file) {
+    const fileBody = ReadFile.sync(file, {encoding: 'utf8'});
+    form.decrypted_content = fileBody;
+  }
+
   if (password) {
     form.password = password
   }
@@ -40,12 +49,12 @@ const Create = (argv) => {
         console.log(`or with curl:`);
         console.log(`curl -X POST -d "password=${password}" ${ENDPOINT}${uuid}`);
       } else {
-        const text = `nb read -t "${token}" -u ${uuid}`;
+        const text = `nb read -t ${token} -u ${uuid}`;
         console.log('-'.repeat(text.length));
         console.log(text);
         console.log('-'.repeat(text.length));
         console.log(`or with curl:`);
-        console.log(`curl ${ENDPOINT}${uuid}/${token}`);
+        console.log(`curl ${ENDPOINT}${uuid}/${token}?output=raw`);
       }
       console.log("Your message will self destruct after being read.");
     }
