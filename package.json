@@ -1,6 +1,6 @@
 {
   "name": "Noteburn CLI",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Share sensitive data safely and easily with CLI",
   "main": "index.js",
   "bin": {
