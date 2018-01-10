@@ -27,7 +27,6 @@
   },
   "homepage": "https://github.com/kv109/hash-msg-npm#readme",
   "dependencies": {
-    "argparse": "^1.0.9",
-    "prettyjson": "^1.2.1"
+    "argparse": "^1.0.9"
   }
 }

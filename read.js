@@ -1,5 +1,4 @@
 const Request = require("request");
-const PrettyJson = require("prettyjson");
 
 const ENDPOINT = "https://www.noteburn.org/api/messages/";
 
@@ -21,7 +20,7 @@ const Create = (argv) => {
       if (statusCode != 200) {
         console.log();
         if (json) {
-          console.log(PrettyJson.render(json, {noColor: true}));
+          console.log(json);
         } else {
           console.log(body);
         }

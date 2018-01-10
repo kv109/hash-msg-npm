@@ -1,5 +1,4 @@
 const Request = require("request");
-const PrettyJson = require("prettyjson");
 const ReadFile = require('./lib/read-file');
 
 const ENDPOINT = "https://www.noteburn.org/api/messages/";
@@ -34,7 +33,7 @@ const Create = (argv) => {
     }
 
     if (statusCode != 200) {
-      console.log(PrettyJson.render(json, {noColor: true}));
+      console.log(json);
     } else {
       const token = json.token;
       const uuid = json.uuid;
