@@ -2,7 +2,7 @@
 
 const ReadFile = require("../lib/read-file");
 
-const argv = require("minimist")(process.argv.slice(2));
+const argv = require("../lib/minimist")(process.argv.slice(2));
 const mode = argv._[0];
 const manifest = JSON.parse(ReadFile("package.json"));
 const version = argv.v || argv.version;
