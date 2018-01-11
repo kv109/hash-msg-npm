@@ -6,7 +6,7 @@ to share sensitive data easily and safely through self-destructing messages.
 ## Install
 
 ```shell
-npm install -g nb
+npm install -g noteburn-cli
 ``` 
 
 ## Create message
