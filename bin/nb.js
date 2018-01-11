@@ -2,9 +2,11 @@
 
 const ReadFile = require("../lib/read-file");
 
+const rootPath = require('path').dirname(require.main.filename) + "/..";
+
 const argv = require("../lib/minimist")(process.argv.slice(2));
 const mode = argv._[0];
-const manifest = JSON.parse(ReadFile("package.json"));
+const manifest = JSON.parse(ReadFile(`${rootPath}/package.json`));
 const version = argv.v || argv.version;
 
 if (version) {
