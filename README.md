@@ -13,7 +13,7 @@ npm install -g noteburn-cli
 
 #### Example
 ```shell
-$ nb create -b "login:kacper, password:doctor-who"
+$ nb create -b "login:tardis, password:doctor-who"
 ```
 
 #### Example with file
@@ -51,7 +51,7 @@ nb read -t 26f7364a0bec2a22 -u 72d5b9c60669b30e1190433e21
 ```shell
 Fetching message... done! Here is the message:
 ------MESSAGE STARTS BELOW------
-login:kacper, password:i-forgot-my-password
+login:tardis, password:i-forgot-my-password
 --------MESSAGE ENDS ABOVE-------
 Message above has already been destroyed.
 ```
